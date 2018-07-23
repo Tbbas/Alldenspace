@@ -4,7 +4,7 @@
 import path from 'path';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser'
+import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import express from 'express';
 import routes from './routes/index';
@@ -13,8 +13,6 @@ import routes from './routes/index';
 dotenv.config({
   silent: true,
 });
-
-
 
 // Express app setup
 const app = express();
@@ -34,7 +32,6 @@ app.set('view engine', 'pug');
 
 // Public files
 app.use(express.static(path.join(__dirname, './public')));
-
 
 app.use('/', routes);
 
