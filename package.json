@@ -1,0 +1,48 @@
+{
+  "name": "alldenspace",
+  "version": "1.0.0",
+  "description": "The personal webpage for Tobias Alldén, a software engineer from Sweden",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint . --ext .js,.jsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tbbas/Alldenspace.git"
+  },
+  "keywords": [
+    "React",
+    "Personal",
+    "Webpage",
+    "Developer",
+    "Sweden",
+    "Gothenburg",
+    "Chalmers",
+    "Machine",
+    "learning",
+    "Resume"
+  ],
+  "author": "Tobias Alldén",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tbbas/Alldenspace/issues"
+  },
+  "homepage": "https://github.com/Tbbas/Alldenspace#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "webpack": "^4.16.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.2.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0"
+  }
+}
