@@ -4,11 +4,20 @@
   "description": "The personal webpage for Tobias Alldén, a software engineer from Sweden",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.4.1",
+    "express": "^4.16.3",
+    "gulp": "^3.9.1",
     "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-fade-in": "^0.1.6",
+    "react-scripts": "1.1.4",
+    "react-scrollable-anchor": "^0.6.1",
+    "react-typing-animation": "^1.3.3",
+    "semantic-ui-react": "^0.82.1"
   },
   "scripts": {
+    "build -semantic": "cd src/semantic && gulp build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint . --ext .js,.jsx",
@@ -29,5 +38,6 @@
   },
   "pre-commit": [
     "lint"
-  ]
+  ],
+  "proxy": "http://localhost:8080"
 }
