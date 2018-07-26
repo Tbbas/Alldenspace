@@ -3,6 +3,8 @@ import Hero from './Hero';
 import Description from './Description';
 import PropTypes from 'prop-types';
 import ScrollableAnchor from 'react-scrollable-anchor'
+import Skills from './Skills'
+import Contact from './Contact'
 import {
   Responsive,
   Visibility,
@@ -22,9 +24,7 @@ import '../css/MainPage.css';
 
 
 class DesktopMain extends Component {
-  state ={
-    displayMenu: false,
-  }
+  state ={ }
   showMenu = () => this.setState({displayMenu: true});
   hideMenu = () => this.setState({displayMenu: false});
 
@@ -34,7 +34,7 @@ class DesktopMain extends Component {
     return (
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
         <Visibility
-          once={false}
+          once={true}
           onBottomPassed={this.showMenu}
           onBottomPassedReverse={this.hideMenu}
           >
@@ -143,11 +143,15 @@ ResponsiveContainer.propTypes = {
 
 const MainPage = () => (
   <ResponsiveContainer>
-     <Segment style={{ padding: '3em 0em' }} vertical>
-     <ScrollableAnchor id={'section1'}>
+     <Segment style={{minHeight: 300, padding: '3em 0em', borderBottom: '0px',} } vertical>
         <Description />
-        </ScrollableAnchor>
     </Segment>
+    <Segment style={{ padding: '3em 0em', borderTop: '0px' }} inverted>
+       <Skills />
+   </Segment>
+   <Segment style={{ padding: '3em 0em', borderTop: '0px' }}>
+      <Contact />
+  </Segment>
   </ResponsiveContainer>
 )
 

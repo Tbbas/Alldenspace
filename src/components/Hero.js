@@ -4,6 +4,7 @@
 import React from 'react';
 import Typing from 'react-typing-animation';
 import FadeIn from 'react-fade-in';
+import PropTypes from 'prop-types';
 import {
   Container, Header
 } from 'semantic-ui-react'
@@ -22,5 +23,9 @@ const Hero = ({mobile}) => (
       </FadeIn>
   </Container>
 );
+
+Hero.propTypes = {
+  mobile: PropTypes.bool,
+}
 
 export default Hero;
