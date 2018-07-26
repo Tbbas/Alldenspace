@@ -18,8 +18,8 @@ const Description = ({ mobile }) => (
       <Segment textAlign='center' style={{paddingTop: 0, paddingBottom: 0}} inverted>
         <Popup trigger={<Button basic color='red' content='Java' />} content='Java is the language that I am most proficient in as it have been the main language used througout my education' />
         <Popup trigger={<Button basic color='blue' content='C#' />} content='Given that Java and C# are very simular and that I wrote my bachelors thesis project in C#. I am also proficient in this language' />
-        <Popup trigger={<Button basic color='green' content='C++' />} content='My most recent summer job position consisted of working with code written in C++, thus I have some experience in this language as well' />
-        <Popup trigger={<Button basic color='purple' content='PHP' />} content='During my time working as a web consultant the language I used the most was PHP' />
+        <Popup trigger={<Button basic color='green' content='C++' />} content='My most recent summer job position consisted of working with code written in C++' />
+        <Popup trigger={<Button basic color='purple' content='PHP' />} content='Worked a lot with PHP during my time as a web consultant' />
         </Segment>
       </Grid.Column>
       </Grid.Row>
@@ -27,7 +27,7 @@ const Description = ({ mobile }) => (
       <Grid.Column float='right'>
       <Segment textAlign='center' style={{paddingTop: 0, paddingBottom: 0}} inverted >
         <Popup trigger={<Button basic color='pink' content='Javascript' />} content='I have done several websites and hobby projects in Javascript (for example this website)' />
-        <Popup trigger={<Button basic color='orange' content='HTML/CSS' />} content='Not a programming language, but I have don a lot of scripting and are very proficient in HTML and CSS' />
+        <Popup trigger={<Button basic color='orange' content='HTML/CSS' />} content='Cannot create a website without these' />
         </Segment>
       </Grid.Column>
       </Grid.Row>

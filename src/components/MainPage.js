@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Hero from './Hero';
 import Description from './Description';
 import PropTypes from 'prop-types';
 import ScrollableAnchor from 'react-scrollable-anchor'
@@ -13,28 +12,36 @@ import {
   Container,
   Sidebar,
   Icon,
-  Button
+  Button,
+  Header,
 } from 'semantic-ui-react';
-
-
-
+import FadeIn from 'react-fade-in';
+import Hero from './Hero'
+import { BrowserRouter as Router,
+Route,
+Link,
+Redirect
+} from 'react-router-dom';
 
 import '../css/MainPage.css';
 
 
 
+
 class DesktopMain extends Component {
   state ={ }
-  showMenu = () => this.setState({displayMenu: true});
-  hideMenu = () => this.setState({displayMenu: false});
+
+  showMenu = () => this.setState({fixed: true});
+  hideMenu = () => this.setState({fixed: false});
 
   render() {
     const { children } = this.props
-    const { displayMenu } = this.state
+    const { fixed } = this.state
+
     return (
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
         <Visibility
-          once={true}
+          once={false}
           onBottomPassed={this.showMenu}
           onBottomPassedReverse={this.hideMenu}
           >
@@ -45,23 +52,25 @@ class DesktopMain extends Component {
           vertical
         >
           <Menu
-            fixed={displayMenu ? 'top' : null}
-            inverted={!displayMenu}
-            pointing={!displayMenu}
-            secondary={!displayMenu}
+            fixed={fixed ? 'top' : null}
+            inverted={! fixed}
+            pointing={! fixed}
+            secondary={! fixed}
             size='large'
           >
-            <Container>
-              <Menu.Item as='a' active>
+            <Container textAlign='center'>
+              <Menu.Item as='a' active >
                 Home
               </Menu.Item>
               <Menu.Item as='a'>Resume</Menu.Item>
+              <Menu.Item as='a'>Projects</Menu.Item>
               <Menu.Item as='a'>Blog</Menu.Item>
             </Container>
           </Menu>
           <Hero />
         </Segment>
       </Visibility>
+
       {children}
       </Responsive>
     );
@@ -70,6 +79,9 @@ class DesktopMain extends Component {
 DesktopMain.propTypes = {
   children: PropTypes.node,
 }
+
+
+
 
 class MobileMain extends Component {
   state = {}
@@ -117,7 +129,6 @@ class MobileMain extends Component {
               </Container>
               <Hero mobile />
             </Segment>
-
             {children}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
@@ -140,6 +151,10 @@ const ResponsiveContainer = ({ children }) => (
 ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 }
+
+const test = () => (
+  <Header> Hello, </Header>
+)
 
 const MainPage = () => (
   <ResponsiveContainer>
