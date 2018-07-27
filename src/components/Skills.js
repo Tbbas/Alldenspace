@@ -10,6 +10,7 @@ import {
 
 
 const Description = ({ mobile }) => (
+  <Segment inverted style={{ padding: '3em 0em', borderBottom: 0}} > 
   <Container text>
     <Divider horizontal style={{color: 'white'}}>My skills</Divider>
     <Grid centered={true}>
@@ -36,6 +37,7 @@ const Description = ({ mobile }) => (
       To see some of the projects I have done, please check out the <a href="#"> Projects </a> section of this page.
       </Header>
   </Container>
+  </Segment>
 )
 
 export default Description;

@@ -5,12 +5,12 @@
 import React from 'react';
 import {
   Container,
-  Divider,Image,Grid
+  Divider,Image,Segment
 } from 'semantic-ui-react'
 
 
 const Description = ({ mobile }) => (
-  <Container text>
+  <Container text style={{padding: '3em 0em'}}>
   <Divider horizontal>About Me</Divider>
     <p
     style={{

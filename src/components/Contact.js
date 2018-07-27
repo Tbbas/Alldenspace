@@ -10,7 +10,7 @@ import {
 
 
 const Contact = ({ mobile }) => (
-  <Container text>
+  <Container text style={{padding: '1em 0em'}}>
   <Divider horizontal>Contact</Divider>
   <Header as='h4' textAlign='center'>If you wish to know more about me or contact me, please do so below</Header>
   <Grid columns={3} divided centered>

@@ -6,12 +6,18 @@ import Typing from 'react-typing-animation';
 import FadeIn from 'react-fade-in';
 import PropTypes from 'prop-types';
 import Typist from 'react-typist';
+import scrollToComponent from 'react-scroll-to-component';
 import {
-  Container, Header
+  Container, Header, Segment
 } from 'semantic-ui-react'
 
 const Hero = ({mobile}) => (
-  <Container text>
+  <Segment
+    inverted
+    textAlign='center'
+    style={{ minHeight: 700}}
+    vertical
+  >
   <Typist avgTypingDelay={80} cursor={{show: false,}}>
   <Header as='h1'
   inverted
@@ -23,7 +29,8 @@ const Hero = ({mobile}) => (
       <FadeIn delay={4000} transitionDuration={2000}>
       <p className="headerSub" style={{top: 0, color: 'dimgray', fontSize: mobile ? '0.7em' : '1.4em'}}>I'm a Software Engineer from Sweden <span role="img">🇸🇪</span></p>
       </FadeIn>
-  </Container>
+    <button onClick={() => scrollToComponent(this.Violet, { offset: 0, align: 'top', duration: 1500})}>Go To Violet</button>
+      </Segment>
 );
 
 Hero.propTypes = {

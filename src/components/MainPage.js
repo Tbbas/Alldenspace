@@ -39,6 +39,7 @@ class DesktopMain extends Component {
     const { fixed } = this.state
 
     return (
+      <Router>
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
         <Visibility
           once={false}
@@ -48,7 +49,6 @@ class DesktopMain extends Component {
           <Segment
           inverted
           textAlign='center'
-          style={{ minHeight: 700, padding: '1em 0em'}}
           vertical
         >
           <Menu
@@ -62,17 +62,18 @@ class DesktopMain extends Component {
               <Menu.Item as='a' active >
                 Home
               </Menu.Item>
-              <Menu.Item as='a'>Resume</Menu.Item>
+              <Link to="/Resume"><Menu.Item as='a'>Resume</Menu.Item></Link>
               <Menu.Item as='a'>Projects</Menu.Item>
               <Menu.Item as='a'>Blog</Menu.Item>
             </Container>
           </Menu>
-          <Hero />
         </Segment>
       </Visibility>
-
+        <Route path="/Resume" component={test} />
       {children}
       </Responsive>
+      </Router>
+
     );
   }
 }
@@ -158,6 +159,10 @@ const test = () => (
 
 const MainPage = () => (
   <ResponsiveContainer>
+  <Segment style={{minHeight: 700}}>
+  <Hero />
+
+  </Segment>
      <Segment style={{minHeight: 300, padding: '3em 0em', borderBottom: '0px',} } vertical>
         <Description />
     </Segment>
