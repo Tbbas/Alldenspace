@@ -6,11 +6,12 @@ import React from 'react';
 import {
   Container,
   Divider,Grid, Popup, Button, Segment, Header
-} from 'semantic-ui-react'
+} from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 
 const Description = ({ mobile }) => (
-  <Segment inverted style={{ padding: '3em 0em', borderBottom: 0}} > 
+  <Segment inverted style={{ padding: '3em 0em', borderBottom: 0}} >
   <Container text>
     <Divider horizontal style={{color: 'white'}}>My skills</Divider>
     <Grid centered={true}>
@@ -34,7 +35,7 @@ const Description = ({ mobile }) => (
       </Grid.Row>
     </Grid>
     <Header as='h5' inverted textAlign='center'>
-      To see some of the projects I have done, please check out the <a href="#"> Projects </a> section of this page.
+      To see some of the projects I have done, please check out the <Link to="/Projects"><a href="#"> Projects </a> </Link>section of this page.
       </Header>
   </Container>
   </Segment>

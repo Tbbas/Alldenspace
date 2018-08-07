@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Resume from './components/Resume';
 import Projects from './components/Projects';
 import Blog from './components/Blog';
+import NoPage from './components/404'
 
 import {
   Responsive,
@@ -101,6 +102,7 @@ const Content = () => (
     <Route path='/resume' component={Resume} />
     <Route path='/projects' component={Projects} />
     <Route path='/blog' component={Blog} />
+    <Route path='/*' component={NoPage} />
   </Switch>
   </Container>
 )

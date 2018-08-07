@@ -1,15 +1,23 @@
-const express = require('express');
-const bodyParser = require('body-parser')
-const path = require('path');
-const app = express();
-app.use(express.static(path.join(__dirname, 'build')));
+var express = require('express'),
+  app = express(),
+  cors = require('cors'),
+  port = process.env.PORT || 8080,
+  mongoose = require('mongoose'),
+  Project = require('./api/models/projectsModel'),
+  bodyParser = require('body-parser');
+  mongoose.Promise = global.Promise;
+  mongoose.connect('mongodb://allden:kittycat12@ds113482.mlab.com:13482/projects')
 
-app.get('/ping', function (req, res) {
- return res.send('pong');
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(cors());
+var routes = require('./api/routes/projectsRoutes');
+
+routes(app);
+
+app.use(function(req, res) {
+  res.status(404).send({url: req.originalUrl + ' not found :c'})
 });
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-app.listen(process.env.PORT || 8080);
+app.listen(port);
+console.log("Listening to port: " + port);
