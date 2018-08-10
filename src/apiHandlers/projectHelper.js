@@ -17,3 +17,6 @@ export function fetchAllProjects() {
   });
 });
 }
+export function postNewProject( ) {
+  
+}

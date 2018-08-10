@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Home from './components/Home';
 import Resume from './components/Resume';
-import Projects from './components/Projects';
+import Projects from './components/Projects/Projects';
+import ViewProject from './components/Projects/ViewProject';
 import Blog from './components/Blog';
 import NoPage from './components/404'
 
@@ -100,7 +101,8 @@ const Content = () => (
   <Switch>
     <Route exact path='/' component={Home} />
     <Route path='/resume' component={Resume} />
-    <Route path='/projects' component={Projects} />
+    <Route exact path='/projects' component={Projects} />
+    <Route path="/projects/:id" component={ViewProject}/>
     <Route path='/blog' component={Blog} />
     <Route path='/*' component={NoPage} />
   </Switch>
