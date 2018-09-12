@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.hero {
+  width:100%;
+  height:100%;
+}
+
+.headerMessage {
+  font-family: 'Montserrat', sans-serif;
+}
+.headerSub {
+  font-family: 'Montserrat', sans-serif;
+}

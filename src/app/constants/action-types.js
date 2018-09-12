@@ -1,0 +1,2 @@
+export const LOAD_PROJECTS = "LOAD_PROJECTS";
+export const SET_ACTIVE_MENU_ITEM = "SET_ACTIVE_MENU_ITEM"; 
