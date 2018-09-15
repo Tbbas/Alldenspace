@@ -20,9 +20,9 @@ Client.posts({}, function (err, posts1) {
 })
 const Projects = () => (
   <Container textAlign='center' fluid style={{padding: '3em 0em'}}>
-    <Segment inverted style={{minHeight: 700}}>
-      <Header as='h1' style={{marginTop: '3em',}}>This page is under construction, please check back later</Header>
-      <p> This page will eventually contain a blog </p>
+    <Segment inverted style={{minHeight: '100vh'}}>
+      <Header as='h1' style={{marginTop: '3em',}}>This cat  is under construction, please check back later</Header>
+      <p> This page will eventually contain a cat </p>
       <Segment inverted style={{position: 'fixed', top: '40%', left:'40%'}}>
         <GridLoader color={'blue'} size={80}/>
         </Segment>

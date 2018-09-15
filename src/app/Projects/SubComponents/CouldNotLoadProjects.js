@@ -3,23 +3,24 @@ import {
   Grid,
   Header,
   Container,
-  Segment
+  Segment,
+  Icon
 } from 'semantic-ui-react';
 
 const CouldNotLoadProjects = () => (
-  <Container fluid style={{padding: '3em 0em', height: '100vh'}}>
+  <Container fluid style={{padding: '3em 0em'}}>
   <Segment
     inverted
     textAlign = 'center'
-    color={'green'}
-    style={{height: '100vh'}}
+    color={'red'}
+    style={{height: '50vh'}}
     >
   <Grid className='centered' style={{paddingTop: '3em'}}>
   <Grid.Row>
-    <Header as='h1' inverted content='Spend less time accounting' />
+    <Header as='h1' inverted content='Could not load projects' />
     </Grid.Row>
     <Grid.Row>
-    <Header as='h2' inverted contetn='SplitEasy'/>
+    <Header as='h1' inverted>😔</Header>
     </Grid.Row>
     </Grid>
     </Segment>

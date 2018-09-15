@@ -15,7 +15,7 @@ const Hero = ({mobile}) => (
   <Segment
     inverted
     textAlign='center'
-    style={{ minHeight: 700}}
+    style={{ minHeight: '100vh', padding: '3em 0'}}
     vertical
   >
   <Typist avgTypingDelay={80} cursor={{show: false,}}>

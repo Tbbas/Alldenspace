@@ -9,14 +9,15 @@ class ProjectCard extends Component {
     super();
   }
   render() {
+    var link = '/projects/' + this.props.project._id;
     return(
       <Grid.Column>
-      <Link to={this.props.id}>
+      <Link to={link}>
       <Card fluid
         image={'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'}
-        header={this.props.name}
-        description={this.props.description}
-        extra={this.props.area}
+        header={this.props.project.name}
+        description={this.props.project.description}
+        extra={this.props.project.area}
         />
         </Link>
         </Grid.Column>

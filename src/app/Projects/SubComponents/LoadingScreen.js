@@ -5,11 +5,11 @@ import {
 import {BounceLoader} from 'react-spinners';
 
 const LoadingScreen = () => (
-  <Container fluid style={{padding: '3em 0em'}}>
+  <Container fluid style={{padding: '3em 0em', minHeight: '100vh'}}>
   <Segment
   inverted
   color={'blue'}
-  style={{ minHeight: 350}}
+  style={{ minHeight: '50vh'}}
   >
   <Grid className="centered"
       vertical

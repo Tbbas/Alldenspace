@@ -19,7 +19,7 @@ class ViewProject extends Component{
       <Image src='https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'  size={'massive'} centered />
       </Segment>
       <Container text textAlign='center'>
-        <Header as='h1' color= {'blue'} content ={this.props.params.id}/>
+        <Header as='h1' color= {'blue'} content ={this.params.id}/>
         <Header as='h6' color={'red'} content={'2018'} style={{marginTop: 0}} />
         <Grid columns={4} className="centered" style={{padding: '.8em 0em'}}>
           <Button basic circular simple content="cool!" />
@@ -78,4 +78,6 @@ computeLink = (link) => {
   }
 }
 }
+
+
 export default ViewProject;

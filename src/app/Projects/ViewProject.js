@@ -8,30 +8,26 @@ import {
   Button, Image,Icon
 } from 'semantic-ui-react';
 import { Router, Route, Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {
+  loadProjectsIfNeeded,
+  changeTab
+} from '../actions/index';
 
-class ViewProject extends Component{
+class ViewSingleProject extends Component{
   constructor() {
     super();
-    this.state={
-      currentProject: undefined,
-    }
   }
 
-pProps() {
-  console.log("PROPS: ", this.props.match.params.id)
-}
-
-
   render() {
-
     return (
     <Container fluid style={{paddingTop: '2em', paddingBottom: 0}}>
     <Segment
       >
-      <Image src='https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'  size={'massive'} centered />
+      //<Image src='https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'  size={'massive'} centered />
       </Segment>
       <Container text textAlign='center'>
-        <Header as='h1' color= {'blue'} content="cat"/>
+        <Header as='h1' color= {'blue'} content={this.params.id}/>
         <Header as='h6' color={'red'} content={'2018'} style={{marginTop: 0}} />
         <Grid columns={4} className="centered" style={{padding: '.8em 0em'}}>
           <Button basic circular simple content="cool!" />
@@ -90,4 +86,53 @@ computeLink = (link) => {
   }
 }
 }
+class Child extends Component{
+  constructor() {
+    super();
+  }
+  componentDidMount() {
+    const {dispatch} = this.props
+    dispatch(loadProjectsIfNeeded())
+    // If one visits this url directly or not using react router
+    if(this.props.currentActiveMenuItem != 'projects') {
+      dispatch(changeTab('projects'))
+    }
+  }
+  render() {
+  console.log("props: ", this.props);
+  if(this.props.loading) {
+    return(<Container style={{padding: '3em 0'}}><h1>:Loading</h1></Container>)
+  } else {
+  return(
+  <Container style={{padding: '3em 0'}}>
+    <h3>ID: {this.props.projects[0].name}</h3>
+  </Container>
+);
+}
+}
+
+}
+
+
+
+const mapStateToProps = (state, ownProps) => {
+  if(state.projects.length == 0) {
+    console.log("No projects, loading...")
+    return {
+      loading: true
+    }
+  } else{
+    console.log("Not empty");
+      return {
+        loading: false,
+        loadingProjects: state.loadingProjects,
+        projects: (state.projects.find((project)=>project._id === ownProps.match.params.id))
+      }
+}
+}
+const mapDispatchToProps = (state) => {
+
+}
+//project: (state.projects.find((project)=>project._id === ownProps.match.params.id))
+const ViewProject = connect(mapStateToProps,mapDispatchToProps)(Child);
 export default ViewProject;
