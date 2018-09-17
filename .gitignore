@@ -21,3 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 
 /src/Semantic/dist
+
+# Do not include authentication config
+authConfig.js
