@@ -28,7 +28,7 @@ function recieveProjects(json, error) {
 function fetchProjects() {
   return dispatch => {
     dispatch(loadProjects())
-    return fetch('http://localhost:8080/projects')
+    return fetch('http://localhost:8080/api/projects')
       .then(response => response.json())
       .then(json => dispatch(recieveProjects(json, false)))
       .catch((e) => {

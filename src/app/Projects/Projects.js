@@ -27,7 +27,11 @@ class ProjectsView extends Component {
       return (<LoadingProjects />);
     } else if(this.props.errorFetchingProjects && !this.props.loadingProjects) {
       return (
-        <CouldNotLoadProjects />
+        <CouldNotLoadProjects error={true}/>
+      );
+    } else if (this.props.projects.length === 0) {
+      return (
+        <CouldNotLoadProjects error={false} />
       );
     }else {
         return (
