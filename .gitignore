@@ -24,3 +24,4 @@ yarn-error.log*
 
 # Do not include authentication config
 authConfig.js
+apiConfig.js
