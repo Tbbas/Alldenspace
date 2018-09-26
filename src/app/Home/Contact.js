@@ -7,12 +7,18 @@ import {
   Container,
   Divider,Grid, Popup, Button, Segment, Header, Icon, List
 } from 'semantic-ui-react'
+import {
+  primary_dark,
+  primary_light,
+  light_accent
+} from '../Common/ColorScheme';
 
 
 const Contact = ({ mobile }) => (
-  <Container text style={{padding: '1em 0em'}}>
-  <Divider horizontal>Contact</Divider>
-  <Header as='h4' textAlign='center'>If you wish to know more about me or contact me, please do so below</Header>
+  <Container fluid style={{padding: '3em 0em', backgroundColor: primary_dark, color:'white' }}>
+  <Container text>
+  <Header as='h1' content="Contact" textAlign="center" style={{color: '#fff'}}/>
+  <Header as='h4' textAlign='center' style={{color: '#fff'}}>If you wish to know more about me or contact me, please do so below</Header>
   <Grid columns={3} divided centered>
     <Grid.Column>
       <List>
@@ -47,6 +53,7 @@ const Contact = ({ mobile }) => (
   </List>
   </Grid.Column>
   </Grid>
+  </Container>
   </Container>
 )
 

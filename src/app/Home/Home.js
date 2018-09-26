@@ -14,6 +14,9 @@ import {
 import FadeIn from 'react-fade-in';
 import PropTypes from 'prop-types';
 import Typist from 'react-typist';
+import {
+  light_accent
+} from '../Common/ColorScheme';
 
 const Hero = ({mobile}) => (
   <Segment
@@ -28,7 +31,7 @@ const Hero = ({mobile}) => (
   style={{fontSize: mobile ? '2em' : '4em', fontWeight: 'bold', marginBottom : 0, marginTop: mobile ? '1.5em' : '3em',}} >
       Hello, World!
     </Header>
-      <p className="headerSub" style={{top: 0, color: 'dimgray',  fontSize: mobile ? '1em' : '2em'}}> My name is: <span style={{fontWeight: 'bold', color:'#2196f3'}}> Tobias Alldén</span></p>
+      <p className="headerSub" style={{top: 0, color: 'dimgray',  fontSize: mobile ? '1em' : '2em'}}> My name is: <span style={{fontWeight: 'bold', color:light_accent}}> Tobias Alldén</span></p>
       </Typist>
       <FadeIn delay={4000} transitionDuration={2000}>
       <p className="headerSub" style={{top: 0, marginBottom: '1em', color: 'dimgray', fontSize: mobile ? '0.7em' : '1.4em'}}>I'm a Software Engineer from Sweden <Flag name='se' /></p>

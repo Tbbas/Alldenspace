@@ -9,25 +9,30 @@ import {
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import {home} from './home.css';
+import {
+  primary_dark,
+  primary_light,
+  light_accent
+} from '../Common/ColorScheme';
 
 
 const Description = () => (
-  <Container fluid>
-  <Container fluid style={{color: 'white', minHeight: '50vh', paddingTop: '5vh' ,backgroundColor: 'blue'}}>
+  <Container fluid style={{backgroundColor: primary_light}}>
+  <Container fluid  inverted style={{color: 'white', minHeight: '50vh', paddingTop: '5vh' ,backgroundColor: primary_dark}}>
   <Container textAlign="center" text>
-    <Header as='h1' content="Skills" style={{color: 'white'}}/>
+    <Header as='h1' content="Skills" style={{color: '#fff'}}/>
     <p>During my education and throughout various hobby projects and hackathons I have aquired skills and knowledge in various areas.</p>
     </Container>
     </Container>
-    <Segment style={{marginTop: '-20vh', marginLeft: ' 5vh', marginRight: '5vh'}}>
+    <Segment style={{marginTop: '-22vh', marginLeft: ' 5vh', marginRight: '5vh', backgroundColor: primary_light}}>
     <Grid  stackable columns={3} divided>
       <Grid.Column>
       <Container fluid className="skillSection">
-      <Icon name="code" size='huge' style={{color: 'purple'}} />
+      <Icon name="code" size='huge' style={{color: light_accent}} />
       <Header as='h3' content="Languages" />
       <p>I enjoy trying various programming languages to see what they can offer</p>
       <div className="skillSectionSegment">
-      <h4 className="skillListHeader">Which are I confortable working with</h4>
+      <h4 className="skillListHeader" style={{color: light_accent}}>Which are I confortable working with</h4>
         <List>
         <List.Item>Java</List.Item>
         <List.Item>Javascript</List.Item>
@@ -38,7 +43,7 @@ const Description = () => (
         </div>
 
           <div class="skillSectionSegment">
-          <h4 className="skillListHeader">Which other have I tried?</h4>
+          <h4 className="skillListHeader" style={{color: light_accent}}>Which other have I tried?</h4>
           <List>
               <List.Item>Haskell</List.Item>
               <List.Item>Erlang</List.Item>
@@ -52,11 +57,11 @@ const Description = () => (
       </Grid.Column>
       <Grid.Column>
       <Container fluid className="skillSection">
-      <Icon name="file code outline" size='huge' style={{color: 'purple'}} />
+      <Icon name="file code outline" size='huge' style={{color: light_accent}} />
       <Header as='h3' content="Frameworks/Technologies" />
       <p>I have also tried an array of various frameworks & Technologies that simplify tasks</p>
       <div className="skillSectionSegment">
-      <h4 className="skillListHeader">Web development</h4>
+      <h4 className="skillListHeader" style={{color: light_accent}}>Web development</h4>
         <List>
         <List.Item>ReactJs</List.Item>
         <List.Item>Ruby on Rails</List.Item>
@@ -69,7 +74,7 @@ const Description = () => (
         </div>
 
           <div class="skillSectionSegment">
-          <h4 className="skillListHeader">Mobile</h4>
+          <h4 className="skillListHeader" style={{color: light_accent}}>Mobile</h4>
           <List>
               <List.Item>React Native</List.Item>
               <List.Item>Android</List.Item>
@@ -79,7 +84,7 @@ const Description = () => (
       </Grid.Column>
       <Grid.Column>
       <Container fluid className="skillSection">
-      <Icon name="book" size='huge' style={{color: 'purple'}} />
+      <Icon name="book" size='huge' style={{color: light_accent}} />
       <Header as='h3' content="Software Engineering" />
       <p>During my edication I have learnt about various Software Engineering practices</p>
       <div className="skillSectionSegment">

@@ -13,6 +13,7 @@ export class TopBar extends Component {
   fixed={'top'}
   inverted
   size='large'
+  style={{backgroundColor: '#030E10'}}
   >
   <Link to='/'>
     <Menu.Item

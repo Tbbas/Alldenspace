@@ -13,6 +13,12 @@ import {areas} from '../consts/ProjectConstants';
 import PropTypes from 'prop-types';
 import { withAuth } from '@okta/okta-react';
 import {deleteProject} from '../api/HelperMethods';
+import {
+  primary_dark,
+  primary_light,
+  light_accent,
+  accent_1,
+} from '../../Common/ColorScheme';
 
 
 
@@ -41,11 +47,19 @@ async checkAuthentication() {
 
    render() {
   return (
-    <Container fluid>
-    <Container text style={{padding: '3em 0'}}>
-    <Icon size="huge" name="code" /> <p>Software Engineering student based in Gothenburg, Sweden with a focus on Algorithms, Software architecture and process management</p>
+    <Container fluid style={{paddingTop: '3em', backgroundColor: primary_light}}>
+    <Container text style={{paddingTop: '2em'}}>
+    <Grid>
+    <Grid.Column width={3}>
+      <Icon size="huge" name="code" style={{color: accent_1}}/>
+      </Grid.Column>
+    <Grid.Column width={13}>
+        <p>Software Engineering student based in Gothenburg, Sweden with a focus on Algorithms, Software architecture and process management</p>
+    </Grid.Column>
+    </Grid>
+    <Divider />
     </Container>
-    <Container fluid style={{padding: '0em 2em', backgroundColor: '#F7F7F7', minHeight: '100vh'}}>
+    <Container fluid style={{padding: '0em 2em', backgroundColor: primary_light, minHeight: '100vh'}}>
           <Grid columns={3} equal>
             {this.state.filteredProjects.map((project) =>
               <ProjectCard project={project} authenticated={this.state.authenticated} />

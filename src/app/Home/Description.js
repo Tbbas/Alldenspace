@@ -5,14 +5,24 @@
 import React from 'react';
 import {
   Container,
-  Divider,Image,Segment, Grid
+  Divider,
+  Image,
+  Segment,
+  Grid,
+  Header
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import {
+  primary_dark,
+  primary_light,
+  light_accent
+} from '../Common/ColorScheme';
 
 
 const Description = ({ mobile }) => (
-  <Container style={{padding: '3em 0em'}}>
-  <Divider horizontal>About Me</Divider>
+  <Container fluid style={{padding: '3em 0em', backgroundColor: primary_light}}>
+  <Container>
+  <Header as='h1' textAlign="center" style={{color: light_accent, marginBottom: '2em'}} content="About Me" />
   <Grid columns='equal'>
   <Grid.Row>
   <Grid.Column>
@@ -39,7 +49,7 @@ const Description = ({ mobile }) => (
       </Grid.Column>
       </Grid.Row>
       </Grid>
-
+      </Container>
       </Container>
 )
 

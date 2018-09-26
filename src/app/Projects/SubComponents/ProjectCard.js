@@ -4,6 +4,12 @@ import {
 } from 'semantic-ui-react';
 import {Link} from  'react-router-dom';
 import {deleteProject} from '../api/HelperMethods';
+import {
+  primary_dark,
+  primary_light,
+  light_accent,
+  accent_1,
+} from '../../Common/ColorScheme';
 
 
 class ProjectCard extends Component {
@@ -13,7 +19,7 @@ class ProjectCard extends Component {
   render() {
     return(
       <Grid.Column>
-      <Card fluid color={'blue'} href={`/portfolio/${this.props.project._id}`}>
+      <Card fluid raised style={{backgroundColor: primary_light}} href={`/portfolio/${this.props.project._id}`}>
         <Image src={this.props.project.image} size="medium" fluid centered/>
         <Card.Content>
           <Card.Header>{this.props.project.name}</Card.Header>
