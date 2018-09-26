@@ -5,6 +5,9 @@ import {
   RECIEVE_PROJECTS
 } from '../constants/action-types';
 
+const axios = require('axios');
+
+
 export const changeTab = currentActiveMenuItem => ({
   type: SET_ACTIVE_MENU_ITEM,
   currentActiveMenuItem,
@@ -24,18 +27,25 @@ function recieveProjects(json, error) {
     recieved_at: Date.now()
   }
 }
-
 function fetchProjects() {
   return dispatch => {
     dispatch(loadProjects())
-    return fetch('http://localhost:8080/api/projects')
-      .then(response => response.json())
-      .then(json => dispatch(recieveProjects(json, false)))
-      .catch((e) => {
-        console.log("Error while fetching projects: ", e)
+    return   axios.get('/api/projects')
+      .then(function (response) {
+        // handle success
+        console.log(response);
+        dispatch(recieveProjects(response.data, false))
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
         dispatch(recieveProjects([], true))
       })
+      .then(function () {
+        // always executed
+      });
   } 
+
 }
 
   function shouldLoadProjects(state) {

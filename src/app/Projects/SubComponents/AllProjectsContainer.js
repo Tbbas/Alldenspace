@@ -5,47 +5,53 @@ import {
   Grid,
   Segment,
   Header,
-  Divider
+  Divider,
+  Icon
 } from 'semantic-ui-react';
 import ProjectFilterButton from './ProjectFilterButton';
-import {PROJECT_TYPES} from '../consts/Areas';
+import {areas} from '../consts/ProjectConstants';
+import PropTypes from 'prop-types';
+import { withAuth } from '@okta/okta-react';
+import {deleteProject} from '../api/HelperMethods';
 
-class AllProjectsContainer extends Component {
-  constructor() {
-    super();
+
+
+
+export default withAuth(class AllProjectsContainer extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       filteredProjects: [],
       activeFilters: [],
       allFilters: []
     }
+    this.checkAuthentication = this.checkAuthentication.bind(this);
+    this.checkAuthentication();
   }
 componentDidMount() {
   this.setState({filteredProjects: this.props.projects})
+  this.generateFilters(this.props.projects);
+}
+async checkAuthentication() {
+  const authenticated = await this.props.auth.isAuthenticated();
+  if (authenticated !== this.state.authenticated) {
+    this.setState({ authenticated });
+  }
 }
 
    render() {
   return (
-    <Container textAlign='center' fluid style={{padding: '3em 0em'}}>
-      <Segment  style={{minHeight: 350, backgroundColor: '#0097A7'}} inverted vertical textAlign='center' >
-      <Header as='h1'
-      style={{fontSize:  '3em', fontWeight: 'bold', marginBottom : 0, marginTop: '2.5em',}} >
-          My projects
-        </Header>
-        <p>Here are some of the projects I have done</p>
-          <h4>Filter:</h4>
-          <Divider />
-          {PROJECT_TYPES.map((filter) =>
-              <ProjectFilterButton applyFilterMethod={this.handleFilterButtonClick} name={filter} />
-          )}
-
-          </Segment>
-          <Segment flex={0}>
-          <Grid columns={3}>
+    <Container fluid>
+    <Container text style={{padding: '3em 0'}}>
+    <Icon size="huge" name="code" /> <p>Software Engineering student based in Gothenburg, Sweden with a focus on Algorithms, Software architecture and process management</p>
+    </Container>
+    <Container fluid style={{padding: '0em 2em', backgroundColor: '#F7F7F7', minHeight: '100vh'}}>
+          <Grid columns={3} equal>
             {this.state.filteredProjects.map((project) =>
-              <ProjectCard project={project} />
+              <ProjectCard project={project} authenticated={this.state.authenticated} />
           )}
           </Grid>
-          </Segment>
+    </Container>
     </Container>
   );
 }
@@ -86,19 +92,14 @@ applyFilters = () => {
 generateFilters = (projects) => {
   let allFilters = new Set([]);
   if(projects) {
-  projects.map((project) =>
-    projects.area.map((filter) =>
-      allFilters.push(filter)
+  projects.forEach((project) => {
+    project.area.forEach((filter) =>
+      allFilters.add(filter)
     )
+  }
   )
 }
-console.log("Returning filters: ", allFilters)
-  return allFilters;
+  this.setState({allFilters:Array.from(allFilters)});
 }
-}
+});
 // Returns all the filter buttons computet from the projects loaded
-
-
-
-
-export default AllProjectsContainer;

@@ -32,13 +32,13 @@ export class TopBar extends Component {
       Resume
     </Menu.Item>
     </Link>
-    <Link to='/projects'>
+    <Link to='/portfolio'>
     <Menu.Item
-    name='projects'
-    active={this.props.currentActiveMenuItem === 'projects'}
-    onClick={() => this.props.changeTab('projects' )}
+    name='portfolio'
+    active={this.props.currentActiveMenuItem === 'portfolio'}
+    onClick={() => this.props.changeTab('portfolio' )}
     >
-      Projects
+      Portfolio
     </Menu.Item>
     </Link>
     <Link to='/blog'>

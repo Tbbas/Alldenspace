@@ -9,7 +9,7 @@ import {
 } from '../actions/index';
 import {connect} from "react-redux";
 import LoadingProjects from './SubComponents/LoadingScreen';
-import CouldNotLoadProjects from './SubComponents/CouldNotLoadProjects';
+import ErrorScreen from './SubComponents/ErrorScreen';
 import AllProjectsContainer from './SubComponents/AllProjectsContainer';
 
 
@@ -19,19 +19,20 @@ class ProjectsView extends Component {
     dispatch(loadProjectsIfNeeded())
     // If one visits this url directly or not using react router
     if(this.props.currentActiveMenuItem != 'projects') {
-      dispatch(changeTab('projects'))
+      dispatch(changeTab('portfolio'))
     }
   }
   render() {
+    console.log("My projects: ", this.props.projects);
     if(this.props.loadingProjects && this.props.projects.length == 0) {
-      return (<LoadingProjects />);
+      return (<LoadingProjects loadingMessage={'Loading projects...'}/>);
     } else if(this.props.errorFetchingProjects && !this.props.loadingProjects) {
       return (
-        <CouldNotLoadProjects error={true}/>
+        <ErrorScreen error={true} message={"Could not reach the server, please try again later"}/>
       );
     } else if (this.props.projects.length === 0) {
       return (
-        <CouldNotLoadProjects error={false} />
+        <ErrorScreen error={false} message={"There exist no entries on the server, please check back later "} />
       );
     }else {
         return (

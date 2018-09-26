@@ -5,40 +5,98 @@
 import React from 'react';
 import {
   Container,
-  Divider,Grid, Popup, Button, Segment, Header
+  Divider,Grid, Popup, Button, Segment, Header, Icon, List
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import {home} from './home.css';
 
 
-const Description = ({ mobile }) => (
-  <Segment inverted style={{ padding: '3em 0em', borderBottom: 0}} >
-  <Container text>
-    <Divider horizontal style={{color: 'white'}}>My skills</Divider>
-    <Grid centered={true}>
-      <Grid.Row style={{paddingBottom: '1em'}} >
-      <Grid.Column float='right'>
-      <Segment textAlign='center' style={{paddingTop: 0, paddingBottom: 0}} inverted>
-        <Popup trigger={<Button basic color='red' content='Java' />} content='Java is the language that I am most proficient in as it have been the main language used througout my education' />
-        <Popup trigger={<Button basic color='blue' content='C#' />} content='Given that Java and C# are very simular and that I wrote my bachelors thesis project in C#. I am also proficient in this language' />
-        <Popup trigger={<Button basic color='green' content='C++' />} content='My most recent summer job position consisted of working with code written in C++' />
-        <Popup trigger={<Button basic color='purple' content='PHP' />} content='Worked a lot with PHP during my time as a web consultant' />
-        </Segment>
+const Description = () => (
+  <Container fluid>
+  <Container fluid style={{color: 'white', minHeight: '50vh', paddingTop: '5vh' ,backgroundColor: 'blue'}}>
+  <Container textAlign="center" text>
+    <Header as='h1' content="Skills" style={{color: 'white'}}/>
+    <p>During my education and throughout various hobby projects and hackathons I have aquired skills and knowledge in various areas.</p>
+    </Container>
+    </Container>
+    <Segment style={{marginTop: '-20vh', marginLeft: ' 5vh', marginRight: '5vh'}}>
+    <Grid  stackable columns={3} divided>
+      <Grid.Column>
+      <Container fluid className="skillSection">
+      <Icon name="code" size='huge' style={{color: 'purple'}} />
+      <Header as='h3' content="Languages" />
+      <p>I enjoy trying various programming languages to see what they can offer</p>
+      <div className="skillSectionSegment">
+      <h4 className="skillListHeader">Which are I confortable working with</h4>
+        <List>
+        <List.Item>Java</List.Item>
+        <List.Item>Javascript</List.Item>
+        <List.Item>Python</List.Item>
+        <List.Item>C#</List.Item>
+        <List.Item>PHP</List.Item>
+          </List>
+        </div>
+
+          <div class="skillSectionSegment">
+          <h4 className="skillListHeader">Which other have I tried?</h4>
+          <List>
+              <List.Item>Haskell</List.Item>
+              <List.Item>Erlang</List.Item>
+              <List.Item>Go</List.Item>
+              <List.Item>C++</List.Item>
+              <List.Item>C</List.Item>
+              </List>
+          </div>
+        </Container>
+
       </Grid.Column>
-      </Grid.Row>
-      <Grid.Row style={{paddingTop: 0, paddingBottom: 0}}>
-      <Grid.Column float='right'>
-      <Segment textAlign='center' style={{paddingTop: 0, paddingBottom: 0}} inverted >
-        <Popup trigger={<Button basic color='pink' content='Javascript' />} content='I have done several websites and hobby projects in Javascript (for example this website)' />
-        <Popup trigger={<Button basic color='orange' content='HTML/CSS' />} content='Cannot create a website without these' />
-        </Segment>
+      <Grid.Column>
+      <Container fluid className="skillSection">
+      <Icon name="file code outline" size='huge' style={{color: 'purple'}} />
+      <Header as='h3' content="Frameworks/Technologies" />
+      <p>I have also tried an array of various frameworks & Technologies that simplify tasks</p>
+      <div className="skillSectionSegment">
+      <h4 className="skillListHeader">Web development</h4>
+        <List>
+        <List.Item>ReactJs</List.Item>
+        <List.Item>Ruby on Rails</List.Item>
+        <List.Item>Node.js</List.Item>
+        <List.Item>Django</List.Item>
+        <List.Item>Wordpress</List.Item>
+        <List.Item>Semantic UI</List.Item>
+        <List.Item>Bootstrap</List.Item>
+          </List>
+        </div>
+
+          <div class="skillSectionSegment">
+          <h4 className="skillListHeader">Mobile</h4>
+          <List>
+              <List.Item>React Native</List.Item>
+              <List.Item>Android</List.Item>
+              </List>
+          </div>
+        </Container>
       </Grid.Column>
-      </Grid.Row>
+      <Grid.Column>
+      <Container fluid className="skillSection">
+      <Icon name="book" size='huge' style={{color: 'purple'}} />
+      <Header as='h3' content="Software Engineering" />
+      <p>During my edication I have learnt about various Software Engineering practices</p>
+      <div className="skillSectionSegment">
+        <List>
+        <List.Item>Agile Workflow</List.Item>
+        <List.Item>Software Architectures</List.Item>
+        <List.Item>Requirements Engineering</List.Item>
+        <List.Item>Empirical Software Engineering</List.Item>
+        <List.Item>Algorithms (My favorite!)</List.Item>
+
+          </List>
+        </div>
+        </Container>
+      </Grid.Column>
     </Grid>
-    <Header as='h5' inverted textAlign='center'>
-      To see some of the projects I have done, please check out the <Link to="/Projects"><a href="#"> Projects </a> </Link>section of this page.
-      </Header>
-  </Container>
-  </Segment>
+    </Segment>
+    </Container>
 )
 
 export default Description;

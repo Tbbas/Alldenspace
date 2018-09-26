@@ -1,0 +1,11 @@
+.skillList {
+  list-style-position: outside;
+  align-items: baseline;
+}
+.skillSection {
+  padding: 2em 2em;
+  text-align: center;
+}
+.skillSectionSegment {
+  margin-top: 4em;
+}

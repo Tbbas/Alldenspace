@@ -1,13 +1,31 @@
  import React, { Component } from 'react';
  import {
-  Container, Grid, Button, Segment, Icon, Header
+  Container, Grid, Button, Segment, Icon, Header, Form, Image
  } from 'semantic-ui-react';
+ import S3FileUpload from 'react-s3';
+ import { uploadFile } from 'react-s3';
  import { withAuth } from '@okta/okta-react';
+ import LoadingScreen from './SubComponents/LoadingScreen';
+ import {
+   loadProjectsIfNeeded,
+   changeTab
+ } from '../actions/index';
+ import {connect} from "react-redux";
+ import {areas, projectStatus} from './consts/ProjectConstants';
+ import ProjectForm from './SubComponents/ProjectForm';
 
 export default withAuth(class AddNewProject extends Component {
   constructor(props) {
     super(props);
-    this.state = { authenticated: null, showSuccessScreen: false };
+    this.state = {
+      authenticated: null,
+      showSuccessScreen: false,
+      showLoadingScreen: false,
+      loadingMessage: "" ,
+      imageSrc: "",
+      name: '',
+
+    };
     this.checkAuthentication = this.checkAuthentication.bind(this);
     this.checkAuthentication();
     this.login = this.login.bind(this);
@@ -34,7 +52,7 @@ export default withAuth(class AddNewProject extends Component {
   showSuccessScreen = (bool) => this.setState({ showSuccessScreen: bool});
 
   render() {
-    if (this.state.authenticated === null) return null;
+    if (this.state.authenticated === null) {this.login}
     if(this.state.authenticated) {
         if(this.state.showSuccessScreen) {
           return (
@@ -45,12 +63,13 @@ export default withAuth(class AddNewProject extends Component {
             </Segment>
             </Container>
           );
+        } else if(this.state.showLoadingScreen) {
+          return(
+            <LoadingScreen loadingMessage = {this.state.loadingMessage} />
+          );
         } else {
           return (
-            <Container text>
-            <p>Form</p>
-            <Button onClick={this.showSuccessScreen}><Icon name='plus'/></Button>
-            </Container>
+            <ProjectForm headerMessage = {"Add new Project"}/>
           );
         }
       } else {
@@ -61,16 +80,15 @@ export default withAuth(class AddNewProject extends Component {
               <Button onClick={this.login}>Login</Button>
             </Segment>
           </Container>
-
-
         )
       }
   }
 
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-  submitArticle = () => {
-    // Submit
-    this.setState({showSuccessScreen: !this.state.showSuccessScreen});
-  }
+addProject = (data) => {
+  console.log("Cool: " , data.name)
+
+}
 
 });

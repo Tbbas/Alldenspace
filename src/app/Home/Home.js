@@ -19,7 +19,7 @@ const Hero = ({mobile}) => (
   <Segment
     inverted
     textAlign='center'
-    style={{ minHeight: '100vh'}}
+    style={{ padding: '3em 0 ', minHeight: '100vh', backgroundImage: 'url(https://images.pexels.com/photos/1421903/pexels-photo-1421903.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)'}}
     vertical
   >
   <Typist avgTypingDelay={80} cursor={{show: false,}}>
@@ -31,9 +31,9 @@ const Hero = ({mobile}) => (
       <p className="headerSub" style={{top: 0, color: 'dimgray',  fontSize: mobile ? '1em' : '2em'}}> My name is: <span style={{fontWeight: 'bold', color:'#2196f3'}}> Tobias Alldén</span></p>
       </Typist>
       <FadeIn delay={4000} transitionDuration={2000}>
-      <p className="headerSub" style={{top: 0, color: 'dimgray', fontSize: mobile ? '0.7em' : '1.4em'}}>I'm a Software Engineer from Sweden <Flag name='se' /></p>
+      <p className="headerSub" style={{top: 0, marginBottom: '1em', color: 'dimgray', fontSize: mobile ? '0.7em' : '1.4em'}}>I'm a Software Engineer from Sweden <Flag name='se' /></p>
+
       </FadeIn>
-      <Segment inverted>
     <FadeIn delay={5000} transitionDuration={2000}>
     <Button
     inverted
@@ -44,7 +44,6 @@ const Hero = ({mobile}) => (
     name="arrow down" />
     </Button>
 </FadeIn>
-</Segment>
       </Segment>
 );
 
