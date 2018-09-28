@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Home from './app/Home/Home';
-import Resume from './components/Resume';
+import Resume from './app/Resume/Resume';
 import ViewProject from './app/Projects/ViewProject';
 import NoPage from './app/Common/404'
 import Projects from './app/Projects/Projects';

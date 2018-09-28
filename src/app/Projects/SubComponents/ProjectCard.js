@@ -19,7 +19,7 @@ class ProjectCard extends Component {
   render() {
     return(
       <Grid.Column>
-      <Card fluid raised style={{backgroundColor: primary_light}} href={`/portfolio/${this.props.project._id}`}>
+      <Card fluid style={{backgroundColor: primary_light}} href={`/portfolio/${this.props.project._id}`}>
         <Image src={this.props.project.image} size="medium" fluid centered/>
         <Card.Content>
           <Card.Header>{this.props.project.name}</Card.Header>

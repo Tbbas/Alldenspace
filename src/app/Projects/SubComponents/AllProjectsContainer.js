@@ -19,6 +19,7 @@ import {
   light_accent,
   accent_1,
 } from '../../Common/ColorScheme';
+import home from './AllProjects.css';
 
 
 
@@ -44,23 +45,11 @@ async checkAuthentication() {
     this.setState({ authenticated });
   }
 }
-
    render() {
   return (
     <Container fluid style={{paddingTop: '3em', backgroundColor: primary_light}}>
-    <Container text style={{paddingTop: '2em'}}>
-    <Grid>
-    <Grid.Column width={3}>
-      <Icon size="huge" name="code" style={{color: accent_1}}/>
-      </Grid.Column>
-    <Grid.Column width={13}>
-        <p>Software Engineering student based in Gothenburg, Sweden with a focus on Algorithms, Software architecture and process management</p>
-    </Grid.Column>
-    </Grid>
-    <Divider />
-    </Container>
     <Container fluid style={{padding: '0em 2em', backgroundColor: primary_light, minHeight: '100vh'}}>
-          <Grid columns={3} equal>
+          <Grid columns={3} doubling stackable className="masonry">
             {this.state.filteredProjects.map((project) =>
               <ProjectCard project={project} authenticated={this.state.authenticated} />
           )}
