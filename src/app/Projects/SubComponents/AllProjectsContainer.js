@@ -24,6 +24,7 @@ import home from './AllProjects.css';
 
 
 
+
 export default withAuth(class AllProjectsContainer extends Component {
   constructor(props) {
     super(props);
@@ -47,11 +48,11 @@ async checkAuthentication() {
 }
    render() {
   return (
-    <Container fluid style={{paddingTop: '3em', backgroundColor: primary_light}}>
-    <Container fluid style={{padding: '0em 2em', backgroundColor: primary_light, minHeight: '100vh'}}>
+    <Container fluid style={{paddingTop: '3em', backgroundColor: primary_dark}}>
+    <Container fluid style={{padding: '2em 2em', backgroundColor: primary_dark, minHeight: '100vh'}}>
           <Grid columns={3} doubling stackable className="masonry">
             {this.state.filteredProjects.map((project) =>
-              <ProjectCard project={project} authenticated={this.state.authenticated} />
+              <ProjectCard project={project} authenticated={this.state.authenticated} deleteProject={this.delete} />
           )}
           </Grid>
     </Container>
@@ -103,6 +104,10 @@ generateFilters = (projects) => {
   )
 }
   this.setState({allFilters:Array.from(allFilters)});
+}
+delete = ({project}) => {
+  console.log("Delete: ", project)
+  alert(`Cool! ${project.name}`)
 }
 });
 // Returns all the filter buttons computet from the projects loaded

@@ -103,7 +103,7 @@ class ViewSingleProject extends Component {
 
   getAreaText(areaKey) {
     let area = areas.find((constArea) => {
-        return areaKey.key === area;
+        return constArea.key === areaKey;
     });
     return {icon: area.iconName, text: area.text}
   }

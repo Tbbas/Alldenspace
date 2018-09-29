@@ -6,6 +6,9 @@ import {
   Segment,
   Icon
 } from 'semantic-ui-react';
+import {
+  primary_dark
+} from '../../Common/ColorScheme';
 
 class ErrorScreen extends Component {
   constructor(props) {
@@ -38,8 +41,7 @@ class ErrorScreen extends Component {
         <Segment
           inverted
           textAlign = 'center'
-          color={'blue'}
-          style={{height: '100vh'}}
+          style={{height: '100vh', backgroundColor: primary_dark}}
           >
         <Grid className='centered' style={{paddingTop: '10em'}}>
         <Grid.Row>

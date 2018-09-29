@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {
- Card, Grid, Image, Icon, Button
+ Card, Grid, Image, Icon, Button, Reveal, Header, Segment
 } from 'semantic-ui-react';
 import {Link} from  'react-router-dom';
-import {deleteProject} from '../api/HelperMethods';
 import {
   primary_dark,
   primary_light,
@@ -19,16 +18,23 @@ class ProjectCard extends Component {
   render() {
     return(
       <Grid.Column>
-      <Card fluid style={{backgroundColor: primary_light}} href={`/portfolio/${this.props.project._id}`}>
+      <Card  href={`/portfolio/${this.props.project._id}`}>
+      <Reveal animated='move up'>
+      <Reveal.Content visible>
         <Image src={this.props.project.image} size="medium" fluid centered/>
-        <Card.Content>
-          <Card.Header>{this.props.project.name}</Card.Header>
-        </Card.Content>
+        </Reveal.Content>
+        <Reveal.Content hidden>
+        <div>
+          <Header as='h5' textAlign="center" style={{paddingTop: '25%', paddingBottom: 0}}>{this.props.project.name}</Header>
+          <Header as='h6' textAlign="center" content="<Click for more info!>"/>
+          </div>
+      </Reveal.Content>
+      </Reveal>
         </Card>
         {this.props.authenticated ?
           <Button.Group floated='right'>
               <Button color={'yellow'} onClick = {() => alert("edit")}>Edit project</Button>
-              <Button negative onClick = {() => deleteProject(this.props.project)}>Delete Project</Button>
+              <Button negative onClick = {() => this.props.deleteProject(this.props.project)}>Delete Project</Button>
         </Button.Group>: <span></span>
         }
         </Grid.Column>
