@@ -7,6 +7,11 @@ import { uploadFile } from 'react-s3';
 import LoadingScreen from './LoadingScreen';
 import {areas, projectStatus} from '../consts/ProjectConstants';
 import {amazonConfig} from '../api/apiConfig';
+import {
+  primary_dark,
+  primary_light,
+  light_accent
+} from '../../Common/ColorScheme';
 const axios = require('axios');
 
 export default class ProjectForm extends Component {
@@ -19,8 +24,8 @@ export default class ProjectForm extends Component {
      showLoadingScreen: false,
      uploadStatusMessage: "",
      loadingMessage: [] ,
-     isEditing : false,
-     imageFile: null,
+     isEditing : this.props.isEditing ? this.props.isEditing : false,
+     imageFile: undefined,
      uploadError: false,
      project: this.props.project ? this.props.project
      : {
@@ -39,7 +44,7 @@ export default class ProjectForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadToBackend = this.uploadToBackend.bind(this);
 
-    
+
  }
 
  handleChange(event) {
@@ -75,14 +80,14 @@ updateStatus = (event, data) => {
 
  showSuccessScreen = (bool) => this.setState({ showSuccessScreen: bool});
  render() {
-   console.log("State: ", this.state)
     if(this.state.showLoadingScreen) {
          return(
            <LoadingScreen loadingMessage = {this.state.loadingMessage} />
          );
        } else {
          return (
-           <Container text textAlign="center" style={{padding: '3em 0'}}>
+           <Container fluid style={{padding: '3em 0', backgroundColor: primary_dark}}>
+           <Container text textAlign="center">
            <Segment color={'blue'}>
            <Header as="h1" content={this.state.headerMessage}/>
            <Form error  success onSubmit={this.handleSubmit}>
@@ -98,7 +103,8 @@ updateStatus = (event, data) => {
              <Form.Dropdown required placeholder='Area' label='Area' fluid multiple selection options={areas} name='area' value={this.state.project.area} onChange={this.updateArea}/>
              <Form.Dropdown required placeholder='Status' label='Status' fluid  selection options={projectStatus} name='status' value={this.state.project.status} onChange={this.updateStatus}/>
              <Form.Input  required label='Link' placeholder='Link' name='link' value={this.state.project.link} onChange={this.handleChange}/>
-             <Form.Input required  label='Image' placeholder='Image' type="file" onChange={(e) => this.setState({imageFile: e.target.files[0]})}/>
+             {this.state.isEditing ? <Image src={this.state.project.image} size='small'/>: <span></span>}
+             {this.state.isEditing ? <Form.Input  label=' New Image' placeholder='Image' type="file" onChange={(e) => this.setState({imageFile: e.target.files[0]})}/>: <Form.Input required  label='Image' placeholder='Image' type="file" onChange={(e) => this.setState({imageFile: e.target.files[0]})}/>}
              <Form.Input  label='Date' placeholder='Date' name='date' value={this.state.project.date} onChange={this.handleChange}/>
              {this.state.isEditing ? // Render based on adding or editing
               <div>
@@ -109,6 +115,7 @@ updateStatus = (event, data) => {
             }
               </Form>
            </Segment>
+           </Container>
            </Container>
          );
        }
@@ -122,6 +129,34 @@ updateStatus = (event, data) => {
    }
  }
 
+updateProject = () => {
+  if(this.state.imageFile !== undefined) {
+    this.setState({showLoadingScreen: true, loadingMessage: "Updating image in amazon bucket"})
+    S3FileUpload.uploadFile(this.state.imageFile, amazonConfig)
+    .then((data) => {
+      this.setState((prevState) => ({project: {...prevState.project, image: data.location}}))
+      this.updateBackEndProject();
+    })
+    .catch((error) => {
+      alert(error)
+    })
+} else {
+  this.updateBackEndProject();
+}
+}
+
+updateBackEndProject = () => {
+  this.setState({showLoadingScreen: true, loadingMessage: "Updating in backend."})
+  return axios.put(`/api/projects/${this.state.project._id}`, this.state.project)
+  .then((response) => {
+    this.setState({uploadSuccess: true, showLoadingScreen: false, uploadStatusMessage: response})
+  }
+  ).catch((error) => {
+    console.log("ERROR: " , error)
+      this.setState({uploadError: true, showLoadingScreen: false, uploadStatusMessage: error.response.data})
+    }
+  );
+}
 
 addProject = () => {
   this.setState({showLoadingScreen: true, loadingMessage: "Uploading image to amazin bucket..."})

@@ -45,7 +45,7 @@ const Description = ({ mobile }) => (
       I am a developer with knowledge in several languages such as <span style={{fontWeight: 'bold'}}>Java, C#, Javascript, PHP</span> and several others. I am currently pursuing a Masters Degree in Software Engineering after completing a bachelor in applied software engineering. I am expected to finish my education in June 2019 and is such open for suggestions from potential employers. If this sounds interesting, please check out my <Link to="/Resume"><a href="#">Resume!</a></Link></p>
       </Grid.Column>
       <Grid.Column>
-      <Image src='https://images.pexels.com/photos/908284/pexels-photo-908284.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' size='large' circular />
+      <Image centered src='/tobiasallden.jpg' size='medium' circular />
       </Grid.Column>
       </Grid.Row>
       </Grid>

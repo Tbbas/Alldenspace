@@ -3,17 +3,22 @@ import {
  Card, Grid, Image, Icon, Button, Reveal, Header, Segment
 } from 'semantic-ui-react';
 import {Link} from  'react-router-dom';
+import {connect} from "react-redux";
 import {
   primary_dark,
   primary_light,
   light_accent,
   accent_1,
 } from '../../Common/ColorScheme';
+import {
+  deleteProject,
+} from '../../actions/index';
 
 
-class ProjectCard extends Component {
-  constructor() {
-    super();
+class ProjectCardView extends Component {
+  constructor(props) {
+    super(props);
+    const {dispatch} = this.props;
   }
   render() {
     return(
@@ -33,12 +38,26 @@ class ProjectCard extends Component {
         </Card>
         {this.props.authenticated ?
           <Button.Group floated='right'>
-              <Button color={'yellow'} onClick = {() => alert("edit")}>Edit project</Button>
-              <Button negative onClick = {() => this.props.deleteProject(this.props.project)}>Delete Project</Button>
+              <Button color={'yellow'} onClick = {() => window.location.href = `/portfolio/edit/${this.props.project._id}`}>Edit project</Button>
+              <Button negative onClick = {() => this.deleteProject(this.props.project)}>Delete Project</Button>
         </Button.Group>: <span></span>
         }
         </Grid.Column>
     );
   }
+  deleteProject = (project) => {
+      this.props.dispatch(deleteProject(project))
+  }
 }
+
+const mapDispatchToProps = () =>{
+  deleteProject
+}
+
+
+const mapStateToProps = (state) => ({
+});
+
+
+const ProjectCard = connect(mapStateToProps)(ProjectCardView);
 export default ProjectCard;

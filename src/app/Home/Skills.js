@@ -8,6 +8,7 @@ import {
   Divider,Grid, Popup, Button, Segment, Header, Icon, List
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import Zoom from 'react-reveal/Zoom';
 import {home} from './home.css';
 import {
   primary_dark,
@@ -28,8 +29,11 @@ const Description = () => (
     <Grid  stackable columns={3} divided>
       <Grid.Column>
       <Container fluid className="skillSection">
+        <Zoom>
       <Icon name="code" size='huge' style={{color: light_accent}} />
+      <br/>
       <Header as='h3' content="Languages" />
+      <br/>
       <p>I enjoy trying various programming languages to see what they can offer</p>
       <div className="skillSectionSegment">
       <h4 className="skillListHeader" style={{color: light_accent}}>Which are I confortable working with</h4>
@@ -41,6 +45,7 @@ const Description = () => (
         <List.Item>PHP</List.Item>
           </List>
         </div>
+        <br/>
 
           <div class="skillSectionSegment">
           <h4 className="skillListHeader" style={{color: light_accent}}>Which other have I tried?</h4>
@@ -52,14 +57,21 @@ const Description = () => (
               <List.Item>C</List.Item>
               </List>
           </div>
+          </Zoom>
         </Container>
 
       </Grid.Column>
       <Grid.Column>
       <Container fluid className="skillSection">
+      <Zoom>
       <Icon name="file code outline" size='huge' style={{color: light_accent}} />
+      <br/>
+
       <Header as='h3' content="Frameworks/Technologies" />
+      <br/>
+
       <p>I have also tried an array of various frameworks & Technologies that simplify tasks</p>
+
       <div className="skillSectionSegment">
       <h4 className="skillListHeader" style={{color: light_accent}}>Web development</h4>
         <List>
@@ -72,6 +84,7 @@ const Description = () => (
         <List.Item>Bootstrap</List.Item>
           </List>
         </div>
+        <br/>
 
           <div class="skillSectionSegment">
           <h4 className="skillListHeader" style={{color: light_accent}}>Mobile</h4>
@@ -80,13 +93,18 @@ const Description = () => (
               <List.Item>Android</List.Item>
               </List>
           </div>
+          </Zoom>
         </Container>
       </Grid.Column>
       <Grid.Column>
       <Container fluid className="skillSection">
+      <Zoom>
       <Icon name="book" size='huge' style={{color: light_accent}} />
+      <br/>
       <Header as='h3' content="Software Engineering" />
+      <br/>
       <p>During my edication I have learnt about various Software Engineering practices</p>
+      <br/>
       <div className="skillSectionSegment">
         <List>
         <List.Item>Agile Workflow</List.Item>
@@ -97,6 +115,7 @@ const Description = () => (
 
           </List>
         </div>
+        </Zoom>
         </Container>
       </Grid.Column>
     </Grid>

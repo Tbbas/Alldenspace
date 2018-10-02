@@ -2,8 +2,6 @@
  import {
   Container, Grid, Button, Segment, Icon, Header, Form, Image
  } from 'semantic-ui-react';
- import S3FileUpload from 'react-s3';
- import { uploadFile } from 'react-s3';
  import { withAuth } from '@okta/okta-react';
  import LoadingScreen from './SubComponents/LoadingScreen';
  import {
@@ -13,6 +11,11 @@
  import {connect} from "react-redux";
  import {areas, projectStatus} from './consts/ProjectConstants';
  import ProjectForm from './SubComponents/ProjectForm';
+ import {
+   primary_dark,
+   primary_light,
+   light_accent
+ } from '../Common/ColorScheme';
 
 export default withAuth(class AddNewProject extends Component {
   constructor(props) {
@@ -41,7 +44,7 @@ export default withAuth(class AddNewProject extends Component {
 
   async login() {
     // Redirect to '/' after login
-    this.props.auth.login('/projects/new');
+    this.props.auth.login('/portfolio/new');
   }
 
   async logout() {
@@ -74,7 +77,7 @@ export default withAuth(class AddNewProject extends Component {
         }
       } else {
         return (
-          <Container textAlign='center' fluid style={{padding: '3em 0'}}>
+          <Container textAlign='center' fluid style={{padding: '3em 0', backgroundColor: primary_dark}}>
             <Segment color={'blue'} inverted style={{height: '50vh'}}>
               <Header as='h1' content="Please log in to add new project" />
               <Button onClick={this.login}>Login</Button>

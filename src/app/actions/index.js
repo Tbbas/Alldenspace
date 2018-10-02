@@ -2,8 +2,14 @@ import {
   LOAD_PROJECTS ,
   SET_ACTIVE_MENU_ITEM,
   FILTER_PROJECTS,
-  RECIEVE_PROJECTS
+  RECIEVE_PROJECTS,
+  DELETE_PROJECT,
+  UPDATE_PROJECT
 } from '../constants/action-types';
+import S3FileUpload from 'react-s3';
+import { deleteFile } from 'react-s3';
+import {amazonConfig} from '../Projects/api/apiConfig';
+
 
 const axios = require('axios');
 
@@ -64,4 +70,39 @@ function fetchProjects() {
         return dispatch(fetchProjects());
       }
     }
+  }
+
+  export function deleteProject(project) {
+    return dispatch => {
+      S3FileUpload.deleteFile(project.image, amazonConfig)
+      .then((data) => {
+        return axios.delete(`/api/projects/${project._id}`)
+          .then(function (response) {
+            // handle success
+            console.log(response);
+            dispatch(fetchProjects())
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+
+          })
+      })
+      .catch((error) => {
+        alert(error)
+      })
+    } 
+  }
+  export function updateProject(project) {
+    return dispatch => {
+      return axios.put('/api/projects', { project: {project}})
+        .then(function (response) {
+          console.log(response);
+          dispatch(fetchProjects())
+        })
+        .catch(function (error) {
+          console.log(error);
+
+        })
+    } 
   }

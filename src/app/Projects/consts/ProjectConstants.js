@@ -5,6 +5,6 @@ export const areas = [
 ]
 export const projectStatus = [
   { key: 'completed', text: 'Completed', value: 'completed' },
-  { key: 'in progress', text: 'In Progress', value: 'in progress' },
+  { key: 'in_progress', text: 'In Progress', value: 'in progress' },
   { key: 'canceled', text: 'Canceled', value: 'canceled' },
 ]

@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import LoadingScreen from './SubComponents/LoadingScreen';
 import ErrorScreen from './SubComponents/ErrorScreen';
 import {areas} from './consts/Areas';
+import {projectStatus} from './consts/ProjectConstants';
+
 import {
   changeTab
 } from '../actions/index';
@@ -30,7 +32,7 @@ class ViewSingleProject extends Component {
       project: null,
       error: false,
     }
-    if(this.props.currentActiveMenuItem != 'projects') {
+    if(this.props.currentActiveMenuItem != 'portfolio') {
       dispatch(changeTab('portfolio'))
     }
   }
@@ -53,10 +55,11 @@ class ViewSingleProject extends Component {
 <Grid.Column width={11}>
   <Segment color={"gray"} inverted style={{height: "105vh", borderRadius: '10px', padding: '2em', backgroundColor: '#f5f6f7', color: 'black'}}>
   <Header as='h1' style={{color: light_accent}} content={this.state.project.name} />
+  {this.getStatusText(this.state.project.status)}
   <Divider/>
   <ReactMarkdown source={this.state.project.description} />
   </Segment>
-  <a href="/projects">{'<< Projects'} </a>
+  <a href="/portfolio">{'<< Portfolio'} </a>
 </Grid.Column>
 <Grid.Column width={5}>
 <Grid.Row textAlign='justified'>
@@ -99,6 +102,22 @@ class ViewSingleProject extends Component {
 </Grid>
       </Container>
     );
+  }
+
+  getStatusText(statusKey) {
+    console.log("Status: ", statusKey);
+    let projStat = projectStatus.find((status) => {
+        return status.key === statusKey;
+    });
+    console.log("Fetcjed Status: ", projStat);
+
+    if(projStat.key === 'completed') {
+      return (<Header as='h6' color='green' content={projStat.text} style={{padding: 0, margin: 0}} />)
+    } else if(projStat.key === 'in_progress') {
+      return (<Header as='h6' color='yellow' content={projStat.text} style={{padding: 0, margin: 0}} />)
+    } else {
+      return (<Header as='h6' color='red' content={projStat.text} style={{padding: 0, margin: 0}} />)
+    }
   }
 
   getAreaText(areaKey) {

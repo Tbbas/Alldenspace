@@ -8,13 +8,6 @@ var mongoose = require('mongoose'),
       res.json(project);
     });
   };
-  exports.delete_all = function( req, res ) {
-    Project.remove({}, function(err, project) {
-      if (err)
-        res.send(err);
-      res.json(project);
-    });
-  };
 
 
   exports.create_project = function( req, res ) {

@@ -105,9 +105,6 @@ generateFilters = (projects) => {
 }
   this.setState({allFilters:Array.from(allFilters)});
 }
-delete = ({project}) => {
-  console.log("Delete: ", project)
-  alert(`Cool! ${project.name}`)
-}
+
 });
 // Returns all the filter buttons computet from the projects loaded

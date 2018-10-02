@@ -7,6 +7,7 @@ import NoPage from './app/Common/404'
 import Projects from './app/Projects/Projects';
 import TopBarContainer from './app/Common/TopBar';
 import AddNewProject from './app/Projects/AddNewProject';
+import EditProject from './app/Projects/EditProject';
 import {
   Container,
 } from 'semantic-ui-react';
@@ -24,6 +25,7 @@ const Content = () => (
     <Route path='/resume' component={Resume} />
     <Route exact path='/portfolio' component={Projects} />
     <Route exact path='/portfolio/new' component={AddNewProject} />
+    <Route path='/portfolio/edit/:id' component={EditProject} />
     <Route path='/portfolio/:id' component={ViewProject} />
     <Route path='/implicit/callback' component={ImplicitCallback}/>
     <Route path='/*' component={NoPage} />

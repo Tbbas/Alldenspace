@@ -4,7 +4,6 @@ module.exports = function(app) {
   app.route('/api/projects')
   .get(projects.list_all_projects)
   .post(projects.create_project)
-  .delete(projects.delete_all);
 
   app.route('/api/projects/:projectId')
   .get(projects.view_project)
