@@ -44,7 +44,7 @@ export default withAuth(class AddNewProject extends Component {
 
   async login() {
     // Redirect to '/' after login
-    this.props.auth.login('/portfolio/new');
+    this.props.auth.login('/portfolio/');
   }
 
   async logout() {
@@ -55,16 +55,15 @@ export default withAuth(class AddNewProject extends Component {
   showSuccessScreen = (bool) => this.setState({ showSuccessScreen: bool});
 
   render() {
-    if (this.state.authenticated === null) {this.login}
     if(this.state.authenticated) {
         if(this.state.showSuccessScreen) {
           return (
-            <Container textAlign='center' fluid style={{margin: '3em'}}>
+            <Segment textAlign='center' fluid style={{margin: '3em'}}>
             <Segment color={'green'} inverted>
             <h1>Success!</h1>
             <Button onClick={this.showSuccessScreen}><Icon name='plus'/></Button>
             </Segment>
-            </Container>
+            </Segment>
           );
         } else if(this.state.showLoadingScreen) {
           return(
@@ -77,12 +76,12 @@ export default withAuth(class AddNewProject extends Component {
         }
       } else {
         return (
-          <Container textAlign='center' fluid style={{padding: '3em 0', backgroundColor: primary_dark}}>
+          <Segment textAlign='center' fluid style={{padding: '3em 0', backgroundColor: primary_dark}}>
             <Segment color={'blue'} inverted style={{height: '50vh'}}>
               <Header as='h1' content="Please log in to add new project" />
               <Button onClick={this.login}>Login</Button>
             </Segment>
-          </Container>
+          </Segment>
         )
       }
   }

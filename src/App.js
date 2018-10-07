@@ -19,7 +19,6 @@ import { Security, ImplicitCallback } from '@okta/okta-react';
 
 
 const Content = () => (
-  <Container fluid>
   <Switch>
     <Route exact path='/' component={Home} />
     <Route path='/resume' component={Resume} />
@@ -30,13 +29,12 @@ const Content = () => (
     <Route path='/implicit/callback' component={ImplicitCallback}/>
     <Route path='/*' component={NoPage} />
   </Switch>
-  </Container>
 )
 
 const App = () => (
   <div>
   <TopBarContainer />
-  <Content />
+  <Content/>
   </div>
 )
 

@@ -15,11 +15,12 @@ import {
 
 
 const Contact = ({ mobile }) => (
-  <Container fluid style={{padding: '3em 0em', backgroundColor: primary_dark, color:'white' }}>
-  <Container text>
+  <div style={{padding: '3em 0em', backgroundColor: primary_dark, color:'white' }}>
+  <Container text textAlign='center'>
   <Header as='h1' content="Contact" textAlign="center" style={{color: '#fff'}}/>
   <Header as='h4' textAlign='center' style={{color: '#fff'}}>If you wish to know more about me or contact me, please do so below</Header>
-  <Grid columns={3} divided centered>
+  <Grid columns={3} stackable divided centered >
+  <Grid.Row only="large screen">
     <Grid.Column>
       <List>
         <List.Item>
@@ -52,9 +53,36 @@ const Contact = ({ mobile }) => (
       </List.Item>
   </List>
   </Grid.Column>
+  </Grid.Row>
+  <Grid.Row only='tablet mobile' style={{paddingTop: '1.2em'}}>
+  <List>
+  <List.Item>
+    <Header as ='h5' style={{color: 'white'}}><Icon name="user" />Tobias Alldén</Header>
+    </List.Item>
+    <List.Item>
+    <Header as ='h5' style={{color: 'white'}}><Icon name="marker" />Gothenburg, Sweden</Header>
+      </List.Item>
+      <List.Item>
+          <Grid columns={4} divided>
+          <Grid.Column>
+            <a style={{color:'white', fontSize: '18pt'}}  href='mailto:alldentobias@gmail.com'><Icon link color='white' name='mail'/></a>
+          </Grid.Column>
+          <Grid.Column>
+            <a style={{color:'white', fontSize: '18pt'}}  href='https://www.linkedin.com/in/tobiasallden/'><Icon link color='white' name='linkedin'/></a>
+          </Grid.Column>
+          <Grid.Column>
+            <a style={{color:'white', fontSize: '18pt'}}  href='https://github.com/Tbbas'><Icon link color='white' name='github'/></a>
+          </Grid.Column>
+          <Grid.Column>
+            <a style={{color:'white', fontSize: '18pt'}} href='https://www.instagram.com/alldentobias/'><Icon link name='instagram'/></a>
+          </Grid.Column>
+          </Grid>
+      </List.Item>
+    </List>
+  </Grid.Row>
   </Grid>
   </Container>
-  </Container>
+  </div>
 )
 
 export default Contact;

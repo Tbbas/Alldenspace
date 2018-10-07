@@ -48,15 +48,15 @@ async checkAuthentication() {
 }
    render() {
   return (
-    <Container fluid style={{paddingTop: '3em', backgroundColor: primary_dark}}>
-    <Container fluid style={{padding: '2em 2em', backgroundColor: primary_dark, minHeight: '100vh'}}>
+    <div style={{paddingTop: '3em', backgroundColor: primary_dark}}>
+    <Segment style={{padding: '2em 2em', backgroundColor: primary_dark, minHeight: '100vh'}}>
           <Grid columns={3} doubling stackable className="masonry">
             {this.state.filteredProjects.map((project) =>
               <ProjectCard project={project} authenticated={this.state.authenticated} deleteProject={this.delete} />
           )}
           </Grid>
-    </Container>
-    </Container>
+    </Segment>
+    </div>
   );
 }
 

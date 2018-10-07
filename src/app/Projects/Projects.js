@@ -44,9 +44,6 @@ class ProjectsView extends Component {
 
 }
 
-const mapDispatchToProps = () =>{
-  changeTab
-}
 
 
 const mapStateToProps = (state) => ({

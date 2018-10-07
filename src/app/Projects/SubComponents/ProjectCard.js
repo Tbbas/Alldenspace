@@ -50,10 +50,6 @@ class ProjectCardView extends Component {
   }
 }
 
-const mapDispatchToProps = () =>{
-  deleteProject
-}
-
 
 const mapStateToProps = (state) => ({
 });

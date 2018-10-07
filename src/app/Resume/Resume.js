@@ -6,7 +6,8 @@ import {
   Container,
   Header,
   Segment,
-  Divider
+  Divider,
+  Grid
 } from 'semantic-ui-react'
 import {
   primary_dark
@@ -38,31 +39,48 @@ class ViewResume extends Component {
   render() {
 
   return (
-  <Container fluid style={{padding: '3em 0em', backgroundColor: primary_dark, minHeight: '100vh'}}>
-  <Container text textAlign="center" >
-  <Segment>
-    <Header as='h1' centered>
+  <div style={{padding: '3em 0', backgroundColor: primary_dark, minHeight: '100vh'}}>
+  <Grid centered>
+  <Grid.Row only="tablet computer">
+  <Grid.Column width={8}>
+  <Segment textAlign="center" >
+    <Header as='h1' centered style={{maxWidth: '60vw'}}>
     My Resume
     </Header>
     <Divider />
     <Document
-              file="Allden_Resume.pdf"
+              file="/Allden_Resume.pdf"
               onLoadSuccess={this.onDocumentLoad}
             >
               <Page pageNumber={this.state.pageNumber} />
   </Document>
     </Segment>
-    </Container>
+    </Grid.Column>
+  </Grid.Row>
+  <Grid.Row only="mobile tablet">
+  <Grid.Column width={16}>>
+      <Segment textAlign="center">
+        <Header as='h1' centered>
+        My Resume
+        </Header>
+        <Divider />
+        <Document
+                  file="/Allden_Resume.pdf"
+                  onLoadSuccess={this.onDocumentLoad}
+                >
+                  <Page scale={0.5} pageNumber={this.state.pageNumber} />
+      </Document>
+        </Segment>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
     <Divider/>
     <Contact />
-  </Container>
+  </div>
 );
 }
 }
 
-const mapDispatchToProps = () =>{
-  changeTab
-}
 
 
 const mapStateToProps = (state) => ({

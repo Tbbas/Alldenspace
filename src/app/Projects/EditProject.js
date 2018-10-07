@@ -49,7 +49,7 @@ export default withAuth(class EditProj extends Component {
  }
 
  render() {
-   if (this.state.authenticated === null) {this.login}
+   if (this.state.authenticated === null) {this.login()}
    if(this.state.authenticated) {
        if(this.state.error) {
          return (

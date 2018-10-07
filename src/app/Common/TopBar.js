@@ -42,15 +42,14 @@ export class TopBar extends Component {
       Portfolio
     </Menu.Item>
     </Link>
-    <Link to='/blog'>
     <Menu.Item
     name='blog'
     active={this.props.currentActiveMenuItem === 'blog'}
-    onClick={() => this.props.changeTab('blog' )}
+    style={{color: 'white'}}
+    //onClick={() => this.props.changeTab('blog' )}
     >
-      Blog
+      Blog <span style={{fontSize: '0.6em', color: 'red', paddingTop: '0.4em', paddingLeft: '0.2em'}}>Coming Soon!</span>
     </Menu.Item>
-    </Link>
   </Menu>
 )}
 }

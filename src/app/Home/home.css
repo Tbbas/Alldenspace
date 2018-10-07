@@ -9,3 +9,24 @@
 .skillSectionSegment {
   margin-top: 4em;
 }
+
+[class*="headerImage"] {
+  padding: 3em 0;
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .headerImage {
+      min-height: 100vh;
+      width: 100%;
+      height: auto;
+    }
+}
+@media only screen and (max-width: 768px) {
+    /* For mobile-phones: */
+    .headerImage {
+      width: 100%;
+      height: 80vh;
+      background-repeat: no-repeat;
+      background-size: auto;
+    }
+}
