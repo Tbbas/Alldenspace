@@ -97,7 +97,7 @@ class ViewSingleProject extends Component {
             </div>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
+        <Grid.Row only="mobile">
         <Grid.Column width={16}>
           <Segment style={{minHeight: '60%', maxWidth: '100%'}} >
           <a href="/portfolio"><Icon name='arrow left' size="large" link/></a>
@@ -117,7 +117,7 @@ class ViewSingleProject extends Component {
           </Segment>
           </Grid.Column>
           </Grid.Row>
-          <Grid.Row>
+          <Grid.Row only="mobile">
           <Grid.Column width={16}>
             <Segment textAlign="center">
               <Button onClick = {() => window.location.href = this.state.project.link} style={{backgroundColor: light_accent, color: '#FFF', width: '60%'}}>
