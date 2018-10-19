@@ -7,10 +7,12 @@ import {
   Header,
   Segment,
   Divider,
-  Grid
+  Grid,
+  Button
 } from 'semantic-ui-react'
 import {
-  primary_dark
+  primary_dark,
+  primary_light
 } from '../Common/ColorScheme';
 import { Document, Page } from 'react-pdf/dist/entry.webpack';
 import {connect} from 'react-redux';
@@ -47,6 +49,8 @@ class ViewResume extends Component {
     <Header as='h1' centered style={{maxWidth: '60vw'}}>
     My Resume
     </Header>
+    {this.state.pageNumber == 1 ? <p style={{fontWeight: 'bold'}}><Button icon disabled onClick = {() => {this.setState({pageNumber: 2})}} content={"<"}></Button> Current page: {this.state.pageNumber} <Button icon onClick ={() => {this.setState({pageNumber: 2})}} content=">"></Button> </p>:
+  <p><Button icon onClick = {() => {this.setState({pageNumber: 1})}} content="<"/> Current page: {this.state.pageNumber}<Button icon disabled onClick = {() => {this.setState({pageNumber: 2})}} content=">"/> </p>}
     <Divider />
     <Document
               file="/Allden_Resume.pdf"
