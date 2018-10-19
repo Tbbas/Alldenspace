@@ -49,8 +49,8 @@ class ViewResume extends Component {
     <Header as='h1' centered style={{maxWidth: '60vw'}}>
     My Resume
     </Header>
-    {this.state.pageNumber == 1 ? <p style={{fontWeight: 'bold'}}><Button icon disabled onClick = {() => {this.setState({pageNumber: 2})}} content={"<"}></Button> Current page: {this.state.pageNumber} <Button icon onClick ={() => {this.setState({pageNumber: 2})}} content=">"></Button> </p>:
-  <p><Button icon onClick = {() => {this.setState({pageNumber: 1})}} content="<"/> Current page: {this.state.pageNumber}<Button icon disabled onClick = {() => {this.setState({pageNumber: 2})}} content=">"/> </p>}
+    {this.state.pageNumber == 1 ? <p style={{fontWeight: 'bold'}}><Button icon disabled onClick = {() => {this.setState({pageNumber: 2})}} content={"<"}></Button> Current page: {this.state.pageNumber}/{this.state.numPages} <Button icon onClick ={() => {this.setState({pageNumber: 2})}} content=">"></Button> </p>:
+  <p style={{fontWeight: 'bold'}}><Button icon onClick = {() => {this.setState({pageNumber: 1})}} content="<"/> Current page: {this.state.pageNumber}/{this.state.numPages}<Button icon disabled onClick = {() => {this.setState({pageNumber: 2})}} content=">"/> </p>}
     <Divider />
     <Document
               file="/Allden_Resume.pdf"
